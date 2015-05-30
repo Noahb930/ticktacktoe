@@ -12,27 +12,27 @@ else
   DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 end
 
-class Person
+class Flavor
   include DataMapper::Resource
   property :id, Serial
   property :name, String
-  property :age, Integer
-  property :created_at, DateTime
+  property :cost, Integer
 end
 
 DataMapper.finalize
 
-Person.auto_upgrade!
+Flavor.auto_upgrade!
 # ---------------------------------------------------------
 
 
 # ---------------------------------------------------------
 # Routes
 #
-get '/' do
-"This is the index page. I can put <b>HTML</b> here!"
+get '/flavors/create' do
+erb :new
 
 end
+foreman start
 
 
 
